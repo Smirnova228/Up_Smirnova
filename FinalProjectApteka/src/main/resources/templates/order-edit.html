@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование заказа</title>
+</head>
+<body>
+<div class="container">
+    <h1>Редактирование заказа</h1>
+    <form method="post" th:object="${order}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Товар</th>
+                <th>Количество</th>
+                <th>Цена</th>
+            </tr>
+            <tr>
+                <td>
+                    <select name="nameProduct">
+                        <div th:each="element : ${product}">
+                            <option th:text="${element.nameProduct}"></option>
+                        </div>
+                    </select>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="count" placeholder="Введите Количество" th:field="*{count}" id="count" th:value="${count}">
+                    <div th:if="${#fields.hasErrors('count')}" th:errors="*{count}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="price" placeholder="Введите Цену" th:field="*{price}" id="price" th:value="${price}">
+                    <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
+                </td>
+                <td>
+                    <select name="firstName">
+                        <div th:each="element : ${client}">
+                            <option th:text="${element.firstName}"></option>
+                        </div>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-success">Изменить заказ</button>
+    </form>
+</div>
+</body>
+</html>

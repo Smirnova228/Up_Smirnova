@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить пользователя</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></head>
+<body>
+<div class="container">
+    <h1>Добавление клиента</h1>
+    <form th:action="${'/client/add'}" method="post" th:object="${clients}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Номер телефона</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="firstName" placeholder="Введите имя" >
+                    <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="secondName" placeholder="Введите фамилию" >
+                    <div th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="middleName" placeholder="Введите отчество" >
+                    <div th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="phone" placeholder="Введите номер телефона" >
+                    <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"/>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-success">Добавить пользователя</button>
+    </form>
+</div>
+</body>
+</html>

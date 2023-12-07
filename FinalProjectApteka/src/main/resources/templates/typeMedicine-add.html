@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление вида препарата</title>
+</head>
+<body>
+<div class="container">
+    <h1>Добавление вида препарата</h1>
+    <form th:action="${'/typeMedicine/add'}" method="post" th:object="${typeMedicines}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Название</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="nameTypeMedicine" placeholder="Введите Название" >
+                    <div th:if="${#fields.hasErrors('nameTypeMedicine')}" th:errors="*{nameTypeMedicine}"/>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="my-1 btn btn-success">Добавить вид препарата</button>
+    </form>
+</div>
+</body>
+</html>

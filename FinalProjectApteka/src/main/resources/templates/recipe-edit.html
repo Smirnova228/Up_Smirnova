@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновление рецепта</title>
+</head>
+<body>
+<div class="container">
+    <h1>Редактирование рецепта</h1>
+    <form method="post" th:object="${recipe}">
+        <table border="1" class="styled-table">
+            <tr>
+                <th>Номер</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="numberRecipe" placeholder="Введите номер" th:field="*{numberRecipe}" id="numberLicence" th:value="${numberRecipe}">
+                    <div th:if="${#fields.hasErrors('numberRecipe')}" th:errors="*{numberRecipe}"/>
+                </td>
+            </tr>
+
+        </table>
+        <button type="submit" class="btn btn-success">Изменить рецепт</button>
+    </form>
+</div>
+</body></html>

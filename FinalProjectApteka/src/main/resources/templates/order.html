@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+</head>
+<body>
+<div class="container my-5">
+    <div th:insert="blocks/header"></div>
+    <div class="row">
+        <div th:switch="${orders}">
+            <div class="col-md-6">
+                <div th:case="*">
+                    <h2 class="my-5">Заказы</h2>
+                    <table  border="1" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Товар</th>
+                            <th>Количество</th>
+                            <th>Цена</th>
+                            <th>Клиент</th>
+                            <th>Манипуляции</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <th:block th:each="order : ${orders}">
+                            <tr>
+                                <td>
+                                    <from th:each="product : ${order.getProduct()}">
+                                        <p th:text="${product.getNameProduct()}"></p>
+                                    </from>
+                                </td>
+                                <td th:text="${order.count}"></td>
+                                <td th:text="${order.price}"></td>
+                                <td>
+                                    <from th:each="client : ${order.getClient()}">
+                                        <p th:text="${client.getFirstName()}"></p>
+                                    </from>
+                                </td>
+                                <td>
+                                    <a th:href="'/order/' + ${order.id} + '/edit'" class=" my-1 btn btn-success">Редактировать</a>
+                                    <a th:href="'/order/' + ${order.id} + '/remove'" class="btn btn-danger">Удалить</a>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </table>
+                </div>
+                <p class="btn btn-primary"><a href="/order/add" style="color: aliceblue; text-decoration: none">Добавить заказ</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

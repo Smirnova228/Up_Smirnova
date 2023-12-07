@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить препарат</title>
+</head>
+<body>
+<div class="container">
+    <h1>Добавление Товара</h1>
+    <form th:action="${'/product/add'}" method="post" th:object="${products}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Название</th>
+                <th>Вид</th>
+                <th>Точка</th>
+                <th>Количество</th>
+                <th>Цена</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="name" placeholder="Введите Название" >
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+                </td>
+                <td>
+                    <select  name="nameTypeMedicine">
+                        <div th:each="element : ${typeMedicine}">
+                            <option th:text="${element.nameTypeMedicine}"></option>
+                        </div>
+                    </select>
+                </td>
+                <td>
+                    <select  name="namePoint">
+                        <div th:each="element : ${points}">
+                            <option th:text="${element.namePoint}"></option>
+                        </div>
+                    </select>
+                </td>
+                <td>
+                    <input class="form-control" type="number" name="count" placeholder="Введите количество" >
+                    <div th:if="${#fields.hasErrors('count')}" th:errors="*{count}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="number" name="price" placeholder="Введите цену" >
+                    <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="my-1 btn btn-success">Добавить препарат</button>
+    </form>
+</div>
+</body></html>

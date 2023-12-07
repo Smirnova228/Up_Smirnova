@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить должность</title>
+</head>
+<body>
+<div class="container">
+    <h1>Добавление должности</h1>
+    <form th:action="${'/employeePosition/add'}" method="post" th:object="${employeePositions}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Название должности</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="nameEmployeePosition" placeholder="Введите Название" >
+                    <div th:if="${#fields.hasErrors('nameEmployeePosition')}" th:errors="*{nameEmployeePosition}"/>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="my-1 btn btn-success">Добавить должность</button>
+    </form>
+</div>
+</body>
+</html>

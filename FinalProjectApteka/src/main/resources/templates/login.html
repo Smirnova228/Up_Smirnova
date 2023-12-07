@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <title>Authentification</title>
+</head>
+<body>
+<div class="my-5 container">
+  <div th:if="${param.error}">
+    Неверное имя пользователя или пароль.
+  </div>
+  <form th:action="@{/login}" method="post">
+    <div class="form-group">
+      <label for="username">Логин :</label>
+      <input type="text" class="form-control" id="username" name="username"/>
+    </div>
+    <div class="form-group">
+      <label for="password">Пароль :</label>
+      <input type="password" class="form-control" id="password" name="password"/>
+    </div>
+    <button type="submit" class="my-2 btn btn-primary">Авторизация</button>
+  </form>
+  <a href="/registration" style="text-decoration: none;">Регистрация</a>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Клиенты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-5">
+    <div th:insert="blocks/header"></div>
+    <div class="row">
+        <div th:switch="${employeePositions}">
+            <div class="col-md-6">
+                <div th:case="*">
+                    <h2 class="my-5">Должности</h2>
+                    <table  border="1" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Название должности</th>
+                            <th>Манипуляции</th>
+                        </tr>
+                        </thead>
+                        <th:body th:each="position : ${employeePositions}">
+                            <tr>
+                                <td th:text="${position.nameEmployeePosition}"></td>
+                                <td>
+                                    <a th:href="'/employeePosition/' + ${position.id} + '/edit'" class=" my-1 btn btn-success">Редактировать</a>
+                                    <a th:href="'/employeePosition/' + ${position.id} + '/remove'" class="btn btn-danger">Удалить</a>
+                                </td>
+                            </tr>
+                        </th:body>
+                    </table>
+                </div>
+                <button class="btn btn-primary"><a href="/employeePosition/add" style="color: aliceblue; text-decoration: none">Добавить новую должность</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

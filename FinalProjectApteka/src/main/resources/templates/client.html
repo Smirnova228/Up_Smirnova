@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+<body>
+<div class="container my-5">
+    <div th:insert="blocks/header"></div>
+    <div class="row">
+        <div th:switch="${clients}">
+            <div class="col-md-6">
+                <div th:case="*">
+                    <h2 class="my-5">Клиенты</h2>
+                    <form method="get" action="/getItem">
+                        <input class="form" type="text" name="firstNameClient"/>
+                        <button class="btn btn-primary" type="submit">Поиск</button>
+                    </form>
+                    <table  border="1" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Фамилия</th>
+                            <th>Имя</th>
+                            <th>Отчество</th>
+                            <th>Номер телефона</th>
+                            <th>Манипуляции</th>
+                        </tr>
+                        </thead>
+                        <th:body th:each="client : ${clients}">
+                            <tr>
+                                <td th:text="${client.getId}"></td>
+                                <td th:text="${client.firstName}"></td>
+                                <td th:text="${client.secondName}"></td>
+                                <td th:text="${client.middleName}" ></td>
+                                <td th:text="${client.phone}"></td>
+                                <td><a th:href="'/client/' + ${client.id} + '/edit'" class=" my-1 btn btn-success">Редактировать</a></td>
+                                <td><a th:href="'/client/' + ${client.id} + '/remove'" class="btn btn-danger">Удалить</a></td>
+                            </tr>
+                        </th:body>
+                    </table>
+                </div>
+                <button class="btn btn-primary"><a href="/client/add" style="color: aliceblue; text-decoration: none">Добавить клиента</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

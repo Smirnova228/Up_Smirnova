@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container my-5">
+    <div th:insert="blocks/header"></div>
+    <table class="table table-striped my-2">
+        <tr>
+            <th>Логин</th>
+            <th>Роли</th>
+        </tr>
+        <tr th:each="el : ${user_list}">
+            <td th:text="${el.username}"></td>
+            <td>
+                <div th:each="role : ${el.roles}">
+                    <p th:text="${role}"></p>
+                </div>
+            </td>
+            <td>
+                <a class="btn btn-primary"
+                   th:href="'/admin/'+${el.ID_User}">Изменить данные</a>
+            </td>
+        </tr>
+    </table>
+    <a href="/registration" class="btn btn-success">Новый пользователь</a>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</html>

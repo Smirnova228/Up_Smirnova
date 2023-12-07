@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Клиенты</title>
+</head>
+<body>
+<div class="container my-5">
+    <div th:insert="blocks/header"></div>
+    <div class="row">
+        <div th:switch="${employees}">
+            <div class="col-md-6">
+                <div th:case="*">
+                    <h2 class="my-5">Сотрудники</h2>
+                    <table  border="1" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Фамилия</th>
+                            <th>Имя</th>
+                            <th>Отчество</th>
+                            <th>Почта</th>
+                            <th>Пароль</th>
+                            <th>Должность</th>
+                            <th>Манипуляции</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <th:block th:each="employee : ${employees}">
+                            <tr>
+                                <td th:text="${employee.firstNameEmployee}"></td>
+                                <td th:text="${employee.secondNameEmployee}"></td>
+                                <td th:text="${employee.middleNameEmployee}" ></td>
+                                <td th:text="${employee.emailEmployee}"></td>
+                                <td th:text="${employee.passwordEmployee}"></td>
+                                <td>
+                                    <from th:each="position : ${employee.getEmployeePosition()}">
+                                        <p th:text="${position.getNameEmployeePosition()}"></p>
+                                    </from>
+                                </td>
+                                <td>
+                                    <a th:href="'/employee/' + ${employee.id} + '/edit'" class=" my-1 btn btn-success">Редактировать</a>
+                                    <a th:href="'/employee/' + ${employee.id} + '/remove'" class="btn btn-danger">Удалить</a>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </table>
+                </div>
+                <p class="btn btn-primary"><a href="/employee/add" style="color: aliceblue; text-decoration: none">Добавить нового сотрудника</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

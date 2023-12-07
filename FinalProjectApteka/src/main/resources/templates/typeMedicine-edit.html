@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновить вид препарата</title>
+</head>
+<body>
+<div class="container">
+    <h1>Редактирование вида препарата</h1>
+    <form method="post" th:object="${typeMedicine}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Название</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="nameTypeMedicine" placeholder="Введите Название" th:field="*{nameTypeMedicine}" id="nameTypeProduct" th:value="${nameTypeMedicine}">
+                    <div th:if="${#fields.hasErrors('nameTypeMedicine')}" th:errors="*{nameTypeMedicine}"/>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-success">Изменить вид препарата</button>
+    </form>
+</div>
+</body></html>

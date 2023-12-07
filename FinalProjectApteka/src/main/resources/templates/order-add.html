@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Client</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Добавление заказа</h1>
+    <form th:action="${'/order/add'}" method="post" th:object="${orders}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Товар</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Клиент</th>
+            </tr>
+            <tr>
+                <td>
+                    <select name="nameProduct">
+                        <option th:each="product : ${products}" th:value="${product.nameProduct}" th:text="${product.nameProduct}"></option>
+                    </select>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="count" placeholder="Введите Количество" >
+                    <div th:if="${#fields.hasErrors('count')}" th:errors="*{count}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="price" placeholder="Введите Цену" >
+                    <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
+                </td>
+                <td>
+                    <select name="firstName">
+                        <option th:each="client : ${clients}" th:value="${client.firstNameClient}" th:text="${client.firstName}"></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="my-1 btn btn-success">Добавить заказ</button>
+    </form>
+</div>
+</body>
+</html>

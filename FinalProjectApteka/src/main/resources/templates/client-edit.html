@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Обновление пользователя</title>
+</head>
+<body>
+<div class="container">
+  <h1>Редактирование человека</h1>
+  <form method="post" th:object="${client}">
+    <table border="1" class="styled-table">
+      <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отчество</th>
+        <th>Номер телефона</th>
+      </tr>
+      <tr>
+        <td>
+          <input class="form-control" type="text" name="firstName" placeholder="Введите имя" th:field="*{firstName}" id="firstNameClient" th:value="${firstName}">
+          <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"/>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="secondNameClient" placeholder="Введите фамилию" th:field="*{secondName}" id="secondNameClient" th:value="${secondName}">
+          <div th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}"/>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="middleNameClient" placeholder="Введите отчество" th:field="*{middleName}" id="middleNameClient" th:value="${middleName}">
+          <div th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}"/>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="phone" placeholder="Введите номер телефона" th:field="*{phone}" id="ClientAddress" th:value="${phone}">
+          <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"/>
+        </td>
+      </tr>
+    </table>
+    <button type="submit" class="btn btn-success">Обновить пользователя</button>
+  </form>
+</div>
+</body></html>

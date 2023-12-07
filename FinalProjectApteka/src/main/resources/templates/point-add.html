@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление точки</title>
+</head>
+<body>
+<div class="container">
+    <h1>Добавление точки</h1>
+    <form th:action="${'/point/add'}" method="post" th:object="${points}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Название</th>
+                <th>Адрес</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="namePoint" placeholder="Введите название" >
+                    <div th:if="${#fields.hasErrors('namePoint')}" />
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="address" placeholder="Введите адрес" >
+                    <div th:if="${#fields.hasErrors('address')}"/>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-success">Добавить точку</button>
+    </form>
+</div>
+</body></html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Client</title>
+ </head>
+<body>
+<div class="container">
+    <h1>Редактирование сотрудника</h1>
+    <form method="post" th:object="${employee}">
+        <table border="1" class="styled-table">
+            <tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Почта</th>
+                <th>Пароль</th>
+                <th>Должность</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="firstNameEmployee" placeholder="Введите Фамилию" th:field="*{firstNameEmployee}" id="firstNameEmployee" th:value="${firstNameEmployee}">
+                    <div th:if="${#fields.hasErrors('firstNameEmployee')}" th:errors="*{firstNameEmployee}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="secondNameEmployee" placeholder="Введите Имя" th:field="*{secondNameEmployee}" id="secondNameEmployee" th:value="${secondNameEmployee}">
+                    <div th:if="${#fields.hasErrors('secondNameEmployee')}" th:errors="*{secondNameEmployee}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="middleNameEmployee" placeholder="Введите Отчество" th:field="*{middleNameEmployee}" id="middleNameEmployee" th:value="${middleNameEmployee}">
+                    <div th:if="${#fields.hasErrors('middleNameEmployee')}" th:errors="*{middleNameEmployee}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="emailEmployee" placeholder="Введите Почту" th:field="*{emailEmployee}" id="emailEmployee" th:value="${emailEmployee}">
+                    <div th:if="${#fields.hasErrors('emailEmployee')}" th:errors="*{emailEmployee}"/>
+                </td>
+                <td>
+                    <input class="form-control" type="text" name="passwordEmployee" placeholder="Введите Пароль" th:field="*{passwordEmployee}" id="passwordEmployee" th:value="${passwordEmployee}">
+                    <div th:if="${#fields.hasErrors('passwordEmployee')}" th:errors="*{passwordEmployee}"/>
+                </td>
+                <td>
+                    <select name="nameEmployeePosition">
+                        <div th:each="element : ${employeePosition}">
+                            <option th:text="${element.nameEmployeePosition}"></option>
+                        </div>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="my-1 btn btn-success">Изменить данные о сотруднике</button>
+    </form>
+</div>
+</body>
+</html>

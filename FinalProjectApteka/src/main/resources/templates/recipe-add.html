@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление рецепта</title>
+</head>
+<body>
+<div class="container">
+    <h1>Добавление рецепта</h1>
+    <form th:action="${'/recipe/add'}" method="post" th:object="${recipes}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Номер</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="numberRecipe" placeholder="Введите Номер" >
+                    <div th:if="${#fields.hasErrors('numberRecipe')}" th:errors="*{numberRecipe}"/>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-success">Добавить рецепт </button>
+    </form>
+</div>
+</body></html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновление должности</title>
+</head>
+<body>
+<div class="container">
+    <h1>Редактирование должности</h1>
+    <form method="post" th:object="${employeePosition}">
+        <table border="1" class="table table-bordered">
+            <tr>
+                <th>Название</th>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" name="NameEmployeePosition" placeholder="Введите название"  id="NameEmployeePosition" th:value="${NameEmployeePosition}">
+                    <div th:if="${#fields.hasErrors('NameEmployeePosition')}" />
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-success">Изменить данные о должности</button>
+    </form>
+</div>
+</body></html>
